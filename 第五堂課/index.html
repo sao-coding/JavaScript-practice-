@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // if (true) {
+        //     let x = 3;
+        // }
+        // console.log(x);
+        // 建立物件 - 基本方法
+        let data = new Object(); // 建立新的空白物件 new Object();
+        // 加入物件的[成員] 物件.成員名稱 = 資料;
+        // 成員的資料不是函式，稱為 [屬性 Attribute]
+        data.name = "John";
+        data.age = 30;
+        data.job = "teacher";
+        data.x = 3;
+        data.y = 4;
+        // 成員的資料式函式，稱為 [方法 Method]
+        data.fn = function() {
+            // this 是函式的綁定物件
+            // 物件的方法中使用 this 代表方法所屬的物件本身
+            console.log("Hello World");
+            console.log(this);
+            console.log("hello");
+            console.log(this.name, this.age, this.job);
+        }
+        
+        console.log(data);
+
+        console.log("----");
+
+        console.log(data.x + data.y);
+        data.fn();
+
+        // 建立物件 - JSON (JavaScript Object Notation)
+        // {成員名稱:資料,成員名稱:資料,...}
+        // 使用物件
+        let data2 = {
+            name: "John1",
+            age: 301,
+            job: "teacher1",
+            x: 31,
+            y: 41,
+            fn: function() {
+                console.log(this.name, this.age, this.job);
+            }
+        };
+        console.log(data2);
+        console.log(data2.x + data2.y);
+        data2.fn();
+
+        function test() {
+            console.log(this);
+        }
+        test();
+        
+        /*  請建立一個物件，存放在變數裡，包含以下成員：
+                - name 字串:代表姓名
+                - age 數字:代表年齡
+                - talk 函式:印出自己的姓名和年齡
+            請呼叫物件的 talk 方法
+        */
+        let data3 = {
+            name: "John2",
+            age: 302,
+            talk: function() {
+                console.log(this.name, this.age);
+            }
+        };
+        data3.talk();
+
+
+        // 使用一般函式，包裝創造物件的流程
+        // 建構函式(constructor): 專門用來建立物件的函式
+        function createObject(xx,yy) {
+            // 自動建立空白的新物件，放在 this 中
+            // let obj = new Object();
+            // obj.x = xx;
+            // obj.y = yy;
+            // obj.fn = function() {
+            //     console.log(this.x + this.y);
+            // };
+            // return obj;
+            this.x = xx;
+            this.y = yy;
+            this.fn = function() {
+                console.log("Hello World");
+                console.log(this.x + this.y);
+            }
+            return this;
+            // return this; 自動回傳 this
+        }
+        // 呼叫建構函式，new 建立函式(參數資料列表)
+        let data4 = new createObject(1,2);
+        let data5 = new createObject(3,4);
+        data4.fn();
+        console.log(data4);
+        console.log(data5);
+
+        class createObject2 {
+            constructor(xx,yy) {
+                this.x = xx;
+                this.y = yy;
+                this.fn = function() {
+                    console.log("Hello World");
+                    console.log(this.x + this.y);
+                }
+            }
+        }
+        let data6 = new createObject2(5,6);
+        data6.fn();
+
+        /*
+            建立物件的流程
+            1. 建立空白的新物件，放在 this 中
+            2. 呼叫建構函式，new 建立函式(參數資料列表)
+            3. 呼叫建構函式的返回值，放在 this 中
+            4. 回傳 this
+        */
+        /*
+            請建立一個 Person 的建構函式
+            運用 Person 建構函式，建立一個新的物件
+        */
+        //多層次物件結構
+        let lib = new Object();
+        lib.noval = {};
+        lib.noval.tom = "tom";
+        lib.noval.taiwan = "taiwan";
+        lib.noval.japan = "japan";
+        console.log(lib);
+        console.log(lib.noval.taiwan);
+        // HTML DOM: 就是瀏覽器內建的 window 物件
+        console.log(window.innerWidth, window.innerHeight);
+        console.log(window.screen.width, window.screen.height);
+        console.log(window.screen.availWidth, window.screen.availHeight);
+        console.log(window.location.href);
+        // window.location.href = "http://www.google.com"; //跳轉網址
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

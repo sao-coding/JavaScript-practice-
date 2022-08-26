@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>班上有多少學生</h3>
+    <div>
+        <input type="text" name="" id="count">
+        <button onclick="createinput();">新增</button>
+    </div>
+    <div id="output">
+
+    </div>
+    <button onclick="average();">計算平均</button>
+    <div id="total">
+
+    </div>
+    <script>
+        function createinput(){
+            let count = document.querySelector("#count").value;
+            let output = document.querySelector("#output");
+            output.innerHTML = "";
+            for (let i = 0; i < count; i++) {
+                let input = document.createElement("input");
+                input.type = "text";
+                input.className = "grades";
+                output.appendChild(input);
+                // output.appendChild(document.createElement("br"));
+            }
+        }
+        // function average(){
+        //     let output = document.querySelector("#output");
+        //     let total = 0;
+        //     let count = output.childElementCount;
+        //     for (let i = 0; i < count; i++) {
+        //         let grade = output.children[i].value;
+        //         total += parseInt(grade);
+        //     }
+        //     document.querySelector("#total").innerHTML = total / count;
+        //     console.log(total);
+        //     console.log(total / count);
+        // }
+        function average(){
+            let output = document.querySelectorAll(".grades");
+            let total = 0;
+            let count = output.length;
+            for (let i = 0; i < count; i++) {
+                let grade = output[i].value;
+                total += parseInt(grade);
+            }
+            let average = total / count;
+            let average_round = document.querySelector("#total");
+            average_round.textContent = average;
+
+        }
+    </script>
+</body>
+</html>

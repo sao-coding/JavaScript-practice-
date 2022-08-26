@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: #fac28d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .input {
+            display: flex;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+
+        input[type=submit] {
+            background-color: #fac28d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        input[type=submit]:hover {
+            opacity: 0.8;
+        }
+        .output {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="num();">num</button>
+    <button onclick="str();">str</button>
+    <div class="container">
+        <h3>字串處理</h3>
+        <div class="input">
+            <input type="text" id="str">
+            <input type="submit" value="submit" onclick="submit();">
+        </div>
+    </div>
+    <div class="container avg">
+        <h3>計算學生的平均成績</h3>
+        <div class="input">
+            <input type="text" id="grade">
+            <input type="submit" value="submit" onclick="submit2();">
+        </div>
+    </div>
+    <div class="container">
+        <h3>排程練習</h3>
+        <span class="timer" id="timer1">3</span>
+    </div>
+    <div class="container">
+        <h3>排程練習</h3>
+        <span class="timer" id="timer2">2</span>
+    </div>
+    <script>
+        function num() {
+            console.log("取亂數", Math.floor(Math.random() * 100));
+            console.log("圓周率", Math.PI);
+            console.log("2的3次方", Math.pow(2, 3));
+            console.log("四捨五入", Math.round(3.44));
+            console.log("取得最大值", Math.max(1, 2, 3, 4, 5));
+        }
+        function str() {
+            let value = "Hello World";
+            console.log("字串長度", value.length);
+            console.log("字串全部轉換成大寫", value.toUpperCase());
+            console.log("字串第一個字", value.charAt(0));
+            console.log("取得子字串", value.substring(0, 5));
+            console.log("搜尋是否包含abc", value.indexOf("abc"));
+            console.log("搜尋是否包含abc", value.includes("abc"));
+        }
+        function submit() {
+            let txt = document.querySelector("#str").value;
+            if (txt == "") {
+                alert("請輸入字串");
+            }
+            else if (txt.indexOf("fuck") != -1) {
+                alert("不要輸入髒話");
+            }
+            else {
+                // document.querySelector("#str").value = "";
+                txt = "";
+                alert("輸入成功");
+
+            }
+        }
+        function submit2() {
+            let txt = document.querySelector("#grade").value;
+            let data = txt.split(",");
+            let sum = 0;
+            for (let i = 0; i < data.length; i++) {
+                sum += parseInt(data[i]);
+            }
+            let avg = Math.round(sum / data.length);
+            let msg = document.createElement("span");
+            msg.className = "output";
+            document.querySelector(".container.avg").appendChild(msg);
+            msg.textContent = "平均成績為" + avg;
+            // document.querySelector(".container").appendChild(span);
+            // document.querySelector("#grade").value = "";
+        }
+        function time() {
+            let date = new Date();
+            let hour = date.getHours();
+            let minute = date.getMinutes();
+            let second = date.getSeconds();
+            let layout = document.querySelector("body");
+            let output = document.createElement("div");
+            output.className = "container";
+            let msg = document.createElement("span");
+            msg.className = "output";
+            layout.appendChild(output);
+            output.appendChild(msg);
+            msg.textContent = "現在時間為" + hour + ":" + minute + ":" + second;
+        }
+        // 非同步的程式 Asynchrrnous
+        window.setTimeout(time, 3000);
+        console.log("time");
+
+        // 等待一段時間，執行函式一次 window.setTimeout(函式,時間);
+        // 每隔一段時間，執行函式一次 window.setInterval(函式,時間);
+
+        let timer = document.querySelectorAll(".timer");
+        // function countdown() {
+        //     timer.innerHTML = timer.innerHTML - 1;
+        //     if (timer.innerHTML > 0) {
+        //         window.setTimeout(countdown, 1000);
+        //     }
+        //     else {
+        //         console.log("時間到");
+        //     }
+        // }
+        // window.setTimeout(countdown, 1000);
+        function countdowntest() {
+            //雙計時器
+            let count = 0;
+            for (let i = 0; i < timer.length; i++) {
+                timer[i].innerHTML = timer[i].innerHTML - 1;
+                if (timer[i].innerHTML > 0) {
+
+                }
+                else {
+                    console.log("時間到");
+                    timer[i].innerHTML = "時間到";
+                    count++;
+                }
+                if (count == 2) {
+                    window.clearInterval(numtime);
+                }
+            }
+            // timer.innerHTML = timer.innerHTML - 1;
+            // if (timer.innerHTML <= 0) {
+            //     console.log("時間到");
+            //     timer.innerHTML = "時間到";
+            //     // window.clearInterval(numtime);
+            // }
+            // console.log("countdown");
+        }
+        let numtime = window.setInterval(countdowntest, 1000);
+
+        // 雙計時器
+        // function setCountdown(id) {
+        //     let timer = document.querySelector("#" + id);
+        //     function countdown() {
+        //         timer.innerHTML = timer.innerHTML - 1;
+        //         if (timer.innerHTML == 0) {
+        //             console.log("時間到");
+        //             timer.innerHTML = "時間到";
+        //             window.clearInterval(numtimetwo);
+        //         }
+        //     }
+        //     let numtimetwo = window.setInterval(countdown, 1000);
+        // }
+        // setCountdown("timer1");
+        // setCountdown("timer2");
+
+        // Callback function 回呼函式
+        // function setCountdown(id, callback) {
+        //     let timer = document.querySelector("#" + id);
+        //     function countdown() {
+        //         timer.innerHTML = timer.innerHTML - 1;
+        //         if (timer.innerHTML == 0) {
+        //             console.log("時間到");
+        //             callback(timer);
+        //             timer.innerHTML = "時間到";
+        //             window.clearInterval(numtimetwo);
+        //         }
+        //     }
+        //     let numtimetwo = window.setInterval(countdown, 1000);
+        // }
+        // let handler1 = function (timer) {
+
+        //     alert(timer.innerHTML);
+        // }
+        // let handler2 = function (timer) {
+        //     alert(timer.innerHTML);
+        // }
+        // setCountdown("timer1", handler1);
+        // setCountdown("timer2", handler2);
+    </script>
+</body>
+
+</html>

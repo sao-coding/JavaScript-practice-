@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <h3>陣列的基本動作</h3>
+    <button onclick="execute();">execute</button>
+    <script>
+        function execute(){
+            // 陣列物件: 按照順序，存放其他資料，每個資料有各自的編號，可以透過編號取得資料。
+            let total = 0;
+            let arr = new Array();
+            arr.push("塞入一個資料");
+            console.log(arr);
+            for (let i = 1; i < 5; i++) {
+                arr[i] = i;
+                console.log(arr[i]);
+                total += arr[i];
+            }
+            console.log("-----");
+            console.log(arr);
+            console.log(total);
+            console.log(total / arr.length);
+        }
+    </script>
+    <script>
+        let grades = new Array();
+        for (let i = 0; i < 3; i++) {
+            let grade = prompt("請輸入第" + (i + 1) + "個成績");
+            grades.push(parseInt(grade));
+        }
+        console.log(grades);
+    </script>
+</body>
+</html>

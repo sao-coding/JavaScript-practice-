@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- 
+換行規矩
+1.注意標籤本身的顯示模式 (display)
+    1.1.行內模式,預設是inline(如果是inline, 則換行規矩會被忽略)
+    1.2.區塊模式,預設是block(自動換行)
+-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            hello world
+        </div>
+        <div class="card">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">facebook</a>
+        </div>
+        <div class="card">
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer"><img src="https://www.google.com.tw/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt=""></a>
+        </div>
+        <div class="card">
+            <h3>列表</h3>
+            <ul>
+                <li><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">google</a></li>
+                <li><a href="https://www.yahoo.com" target="_blank" rel="noopener noreferrer">yahoo</a></li>
+                <li><a href="https://www.bing.com" target="_blank" rel="noopener noreferrer">bing</a></li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>表格</h3>
+            <div id="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>電話</th>
+                            <th>地址</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>陳大明</td>
+                        <td>0912345678</td>
+                        <td>台北市中山區</td>
+                    </tr>
+                    <tr>
+                        <td>陳小明</td>
+                        <td>0987654321</td>
+                        <td>台北市中山區</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <div>
+                <h3>文章標題</h3>
+            </div>
+            <div id="depiction">
+                今天<span style="background-color: yellow;">天氣</span>真他媽的爛
+            </div>
+        </div>
+</body>
+
+</html>

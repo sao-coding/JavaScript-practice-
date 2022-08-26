@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #fac28d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="container">
+        <button onclick="getWeather()">Get Weather</button>
+    </div> -->
+    <div class="container">
+    </div>
+    <div class="container weather">
+    </div>
+    <script>
+        function getjson(src,callback){
+            fetch(src).then(function(response){
+                return response.json();
+            }).then(function(data){
+                callback(data);
+            })
+        }
+        function loadData(data) {
+            document.querySelector('.container').innerHTML = "";
+            for (let i = 0; i < data.length; i++) {
+                let result = document.querySelector(".container");
+                let product = data[i];
+                // console.log(product.name);
+                let productElement = document.createElement("div");
+                productElement.textContent = product.name + " " + product.price;
+                result.appendChild(productElement);
+            }
+        }
+        function getWeather(data){
+            document.querySelector(".weather").innerHTML = "";
+            // let src = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-B2DD23C3-AAB7-4A12-A50C-2FB1EE813769";
+            // fetch(src).then(function(response){
+            //     return response.json();
+            // }).then(function(data){
+            //     console.log(data);
+                let output = document.querySelector(".weather");
+                for (let i = 0; i < data.records.location.length; i++) {
+                    let locations = data.records.location[i];
+                    let minT = data.records.location[i].weatherElement[2].time[0].parameter.parameterName;
+                    let output1 = document.createElement("div");
+                    
+                    output1.textContent = locations.locationName + " 最低溫度為 " + minT;
+                    output.appendChild(output1);
+                }
+                
+            // });
+        }
+        let src = "https://cwpeng.github.io/live-records-samples/data/products.json";
+        let src1 = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-B2DD23C3-AAB7-4A12-A50C-2FB1EE813769";
+        getjson(src,loadData);
+        getjson(src1,getWeather);
+    </script>
+</body>
+</html>

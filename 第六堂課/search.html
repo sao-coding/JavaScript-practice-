@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search box</title>
+    <style>
+        /* * {
+            border: #000 1px solid;
+        } */
+        .title {
+            margin: 10px;
+            padding: 10px;
+            background-color: rgb(213, 168, 255);
+            border-radius: 8px;
+        }
+
+        .search {
+            margin: 10px;
+        }
+
+        .selected-tag {
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        .selected {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <span id="page" class="selected-tag" onclick="Page_Search();">Page</span>
+            <span id="image" class="selected" onclick="Image_Search();">Image</span>
+        </div>
+        <div class="search">
+            <input type="text" class="search-box" placeholder="Search">
+            <input type="button" class="search-button" value="Page Search" onclick="search();">
+        </div>
+    </div>
+    <script>
+        let page = document.querySelector("#page");
+        let image = document.querySelector("#image");
+        let btn = document.querySelector(".search-button");
+
+        function Page_Search() {
+            page.className = "selected-tag";
+            image.className = "selected";
+            btn.value = "Page Search";
+            console.log("Page Search");
+        }
+        function Image_Search() {
+            page.className = "selected";
+            image.className = "selected-tag";
+            btn.value = "Image Search";
+            console.log("Image Search");
+        }
+    </script>
+</body>
+
+</html>

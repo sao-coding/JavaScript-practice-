@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let money;
+        while(true){
+            money = prompt("請輸入金額");
+            if(money == null){
+                break;
+            }
+            if(money == ""){
+                alert("請輸入金額");
+            }else{
+                break;
+            }
+        }
+        // let a = 2;
+        // for (;a<=6;a++){
+        //     console.log(a)
+
+        // }
+        function test(count) {
+            let sum = 0;
+            for (let i = 0; i <= count; i++) {
+                sum += i;
+            }
+            console.log(sum)
+        }
+        test(50);
+        test(10);
+        test(100);
+        function add(n1, n2) {
+            return n1 + n2;
+        }
+        let x = add(1, 2);
+        console.log(x);
+
+        let add1 = function (n1, n2) {
+            console.log(n1 + n2);
+        }
+        add1(3, 5);
+        let newadd = add1;
+        newadd(2, 2)
+
+        function myFunction() {
+            let text = "Press a button!\nEither OK or Cancel.";
+            if (confirm(text) == true) {
+                text = "You pressed OK!";
+            } else {
+                text = "You canceled!";
+            }
+            console.log(text);
+        }
+        myFunction();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

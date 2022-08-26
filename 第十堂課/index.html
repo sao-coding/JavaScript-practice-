@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        button {
+            background-color: #fac28d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .input {
+            display: flex;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+
+        input[type=submit] {
+            background-color: #fac28d;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 網址的組成:
+    通訊協定://主機名稱/路徑?參數=值&參數=值
+    要求字串格式: 參數名稱=值&參數名稱=值
+    https://www.google.com/search?q=test -->
+    <div class="container">
+        <form action="https://www.google.com/search" method="get">
+            <h3>搜尋的功能</h3>
+            <div class="input">
+                <input type="text" name="q" placeholder="請輸入搜尋的關鍵字">
+                <input type="submit" value="搜尋">
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <h3>AJAX / XHR</h3>
+        <button onclick="loadData()">載入資料</button>
+        <div id="result"></div>
+        <script>
+            function loadData() {
+                let src = "https://cwpeng.github.io/live-records-samples/data/products.json";
+                // let handler = function(response) {
+                //     console.log(response);
+                // };
+                // // 非同步的程式
+                // fetch(src).then(handler);
+                let handler = function(response) {
+                    console.log(response);
+                };
+                // let data = {};
+                // 非同步的程式
+                // Promise
+                // 使用 fetch() 連線準備好的網址，並取得後端回應
+                // fetch(src).then(function(response) {
+                //     return response.json();
+                // }).then(function(最後的資料) {
+                //     
+                // });
+
+                fetch(src).then(function(response) {
+                    console.log(response)
+                    return response.json();
+                }).then(function(json) {
+                    console.log(json);
+                    data = json;
+                    let result = document.querySelector("#result");
+                    for (let i = 0; i < data.length; i++) {
+                        let product = data[i];
+                        let productElement = document.createElement("div");
+                        productElement.textContent = product.name + " " + product.price;
+                        result.appendChild(productElement);
+                    }
+                });
+                // setTimeout(function() {
+                //     console.log(data[0].name);
+                // }, 1000);
+                // console.log("資料載入中...");
+                //JSON
+                // let data = {
+                //     page:1,
+                //     list:[
+                //         {
+                //             id:0,
+                //             name:"John"
+                //         },
+                //         {
+                //             id:1,
+                //             name:"Mary"
+                //         },
+                //         {
+                //             id:2,
+                //             name:"Peter"
+                //         }
+                        
+                //     ]
+                // };
+                // console.log(data.list[0].name);
+                // console.log(data["list"][0]["name"]);
+                // console.log(data["list"].length);
+            }
+        </script>
+    </div>
+</body>
+
+</html>

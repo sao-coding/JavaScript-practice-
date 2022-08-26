@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search box</title>
+    <style>
+        /* * {
+            border: #000 1px solid;
+        } */
+        .title {
+            margin: 10px;
+            padding: 10px;
+            background-color: rgb(213, 168, 255);
+            border-radius: 8px;
+        }
+
+        .search {
+            margin: 10px;
+        }
+
+        .selected-active {
+            background-color: rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        .selected {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <span class="list selected-active" onclick="change(this);">1</span>
+            <span class="list selected" onclick="change(this);">2</span>
+            <span class="list selected" onclick="change(this);">3</span>
+            <span class="list selected" onclick="change(this);">4</span>
+        </div>
+    </div>
+    <script>
+        function change(active) {
+            let list = document.querySelectorAll(".list");
+            for (let i = 0; i < list.length; i++) {
+                list[i].className = "list selected";
+            }
+            active.className = "list selected-active";
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+/* *{
+    border: #000 1px solid;
+} */
+body {
+    background-color: #b37b7b;
+    margin: 0;
+}
+.navbar {
+    height: 50px;
+    line-height: 50px;
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+    text-align: center;
+}
+.list {
+    /* 讓內部變成左右排列 */
+    display: flex;
+    /* 控制左右排列方式 */
+    justify-content: center;
+    /* 允許內部的快必要時往下排列 */
+    flex-wrap: wrap;
+}
+.box{
+    width: 200px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.box:hover{
+    background-color: rgba(129, 0, 0, 0.8);
+}
+.content{
+    border-radius: 10px;
+}
+.box .cover{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+
+}
+.cover img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+}
+@media screen and (min-width: 1000px) {
+    .box{
+        width: 100%;
+    }
+}

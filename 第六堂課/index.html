@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            opacity: 0.25;
+            transition: width 1s, opacity 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>HTML DOM 練習</h3>
+    <div id="div1">我的簡單網頁</div>
+    <div id="div2">我的簡單網頁2</div>
+    <div id="div3"></div>
+    <div id="div4">
+        <img id="image" src="https://picsum.photos/200" alt="">
+    </div>
+    <button onclick="change();">點我</button>
+    <button id="show" onclick="show();">顯示</button>
+    <button id="updata" onclick="updata();">更新</button>
+    <script>
+        function change() {
+            // window.document.bgColor = "red";
+            // window.document.getElementById("div1").innerHTML = "改變內容";
+            console.log(document.body);
+            console.dir(document.body);
+            console.log(window);
+            // 取得 想要操作標籤
+            // 針對取得的標籤做操作
+            console.dir(window.document.all[8]);
+            window.document.all[8].innerHTML = "改變內容";
+
+            // 取得想要操作的標籤 document.querySelector("CSS 選擇器")
+            let element = document.querySelector("div");
+            console.log(element);
+            element.innerHTML = "困難";
+            // 針對取得的標籤做操作
+            element = document.querySelector("#div1");
+            element.innerHTML = "hi";
+            element.className = "box"
+            element.style.color = "red";
+            element.style.fontWeight = "bold";
+            element.style.textDecoration = "underline";
+            element.style.display = "none";
+
+        }
+        function show() {
+            let element = document.querySelector("#show");
+            element.innerHTML = "隱藏";
+            element.id = "hide";
+            element.onclick = hide;
+            document.querySelector("#div3").innerHTML = "我的簡單網頁3";
+        }
+        function hide() {
+            let element = document.querySelector("#hide");
+            element.innerHTML = "顯示";
+            element.id = "show";
+            element.onclick = show;
+            document.querySelector("#div3").innerHTML = "";
+        }
+        function updata() {
+            let element = document.querySelector("#image");
+            element.style.width = "300px";
+            element.style.opacity = "1";
+        }
+    </script>
+</body>
+
+</html>
